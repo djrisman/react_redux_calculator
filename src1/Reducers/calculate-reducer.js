@@ -1,16 +1,16 @@
 export default function calculateReducer(state='0', {type, payload}){
     switch (type) {
       case "+":
-          return parseInt(payload.currentValue) + parseInt(payload.nextValue);
+          return payload.currentValue + payload.nextValue;
         break;
       case "-":
-          return parseInt(payload.currentValue) - parseInt(payload.nextValue);
+          return payload.currentValue - payload.nextValue;
         break;
       case "/":
-          return parseInt(payload.currentValue) / parseInt(payload.nextValue);
+          return payload.currentValue / payload.nextValue;
         break;
       case "*":
-          return parseInt(payload.currentValue) * parseInt(payload.nextValue);
+          return payload.currentValue * payload.nextValue;
         break;
       case "=":
           return payload.nextValue;
