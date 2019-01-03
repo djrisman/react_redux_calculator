@@ -7,7 +7,6 @@ import { Calculation } from './Actions/calculate-action'
 import { Input } from './Actions/input-action'
 import {bindActionCreators} from 'redux';
 
-
 class Cal extends Component {
   constructor(props){
   super(props);
@@ -37,7 +36,7 @@ class Cal extends Component {
   }
 
   Calculate(next_operator){
-    const { operator, value} = this.state;
+    const { operator, value, isWait} = this.state;
     const {displayValue} = this.props;
     const nextValue = parseFloat(displayValue);
 
@@ -45,7 +44,7 @@ class Cal extends Component {
       this.setState({ value: nextValue })
     }else if(operator){
       const currentValue = value;
-      if(operator && currentValue && nextValue){
+      if(operator && currentValue && nextValue && !isWait){
         this.props.dispatch(Calculation(operator,currentValue, nextValue));
         }
       const newList = [currentValue,operator,nextValue];
@@ -95,7 +94,6 @@ class Cal extends Component {
   Clear() {
       this.props.dispatch(Input("single", "0"));
   }
-
 
   render() {
     console.log(this.state);
